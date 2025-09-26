@@ -107,11 +107,17 @@
             if (!ziwoFile || !maqsamFile) { alert('Upload both CSVs!'); return; }
             const ziwoReader = new FileReader();
             ziwoReader.onload = function(e) {
-                ziwoData = parseCSV(e.target.result);
+                try {
+                    ziwoData = parseCSV(e.target.result);
+                    console.log('Ziwo parsed');
+                } catch (err) { alert('Ziwo CSV error!'); return; }
                 const maqsamReader = new FileReader();
                 maqsamReader.onload = function(f) {
-                    maqsamData = parseCSV(f.target.result);
-                    performCalculations();
+                    try {
+                        maqsamData = parseCSV(f.target.result);
+                        console.log('Maqsam parsed');
+                        performCalculations();
+                    } catch (err) { alert('Maqsam CSV error!'); return; }
                 };
                 maqsamReader.readAsText(maqsamFile);
             };
@@ -153,7 +159,7 @@
 
         function performCalculations() {
             results = {};
-            // Ziwo: Aggregate calls
+            // Ziwo
             ziwoData.forEach((row, idx) => {
                 if (idx === 0 || row.length <= ZIWO_DURATION_INDEX) return;
                 const name = row[ZIWO_AGENT_INDEX]?.trim() || 'Unknown';
@@ -161,7 +167,7 @@
                 if (!results[name]) results[name] = { totalCallHours: 0, availableHours: defaultAvailableHours, additionalActivity: 0 };
                 results[name].totalCallHours += durMin / 60;
             });
-            // Maqsam: Override available/additional
+            // Maqsam
             maqsamData.forEach((row, idx) => {
                 if (idx === 0 || row.length <= MAQSAM_ADDITIONAL_INDEX) return;
                 const name = row[MAQSAM_AGENT_INDEX]?.trim() || 'Unknown';
@@ -169,13 +175,11 @@
                 results[name].availableHours = parseFloat(row[MAQSAM_AVAILABLE_INDEX]) || defaultAvailableHours;
                 results[name].additionalActivity = parseFloat(row[MAQSAM_ADDITIONAL_INDEX]) || 0;
             });
-            // Calculate %
+            // %
             Object.keys(results).forEach(name => {
                 const d = results[name];
-                d.utilization = Math.round((d.totalCallHours / d.availableHours) * 100 * 100) / 100;
-                d.occupation = Math.round(((d.totalCallHours + d.additionalActivity) / d.availableHours) * 100 * 100) / 100;
-                d.utilization = Math.max(0, Math.min(100, d.utilization));
-                d.occupation = Math.max(0, Math.min(100, d.occupation));
+                d.utilization = Math.max(0, Math.min(100, Math.round((d.totalCallHours / d.availableHours) * 100 * 100) / 100));
+                d.occupation = Math.max(0, Math.min(100, Math.round(((d.totalCallHours + d.additionalActivity) / d.availableHours) * 100 * 100) / 100));
             });
             displayResults();
             console.log('Calculations done');
@@ -187,4 +191,4 @@
             Object.keys(results).sort().forEach(name => {
                 const d = results[name];
                 const utilClass = d.utilization > 70 ? 'good' : d.utilization > 40 ? 'warning' : 'bad';
-               
+                const occClass = d.occupation > 70 ? 'good' : d.occupation > 40 ? 'warning' : 'bad
