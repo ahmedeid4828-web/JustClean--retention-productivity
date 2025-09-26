@@ -6,254 +6,68 @@
     <title>JustClean - Retention Team Productivity</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Darker JustClean Colors: Deeper Purple and White */
         :root {
             --primary-purple: #4A148C;
             --light-purple: #D7BDE2;
             --white: #FFFFFF;
             --text-dark: #333333;
             --border-light: #B39DDB;
+            --success-green: #4CAF50;
+            --warning-orange: #FF9800;
+            --danger-red: #F44336;
         }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--white) !important;
-            color: var(--text-dark);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        /* Professional Header */
-        .header {
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-purple), var(--light-purple));
-            color: var(--white);
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            font-size: 3em;
-            font-weight: 700;
-            margin: 0 0 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .header h2 {
-            font-size: 1.5em;
-            font-weight: 300;
-            margin: 0;
-            opacity: 0.9;
-        }
-        
-        /* Professional Form Section */
-        #sheetUploadSection {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.15);
-            border: 1px solid var(--border-light);
-        }
-        
-        #sheetUploadSection h2 {
-            color: var(--primary-purple);
-            text-align: center;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--light-purple);
-            padding-bottom: 10px;
-        }
-        
-        #sheetUploadSection p {
-            text-align: center;
-            color: var(--text-dark);
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-        
-        form#uploadForm {
-            background-color: var(--light-purple);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: inset 0 2px 10px rgba(74, 20, 140, 0.1);
-        }
-        
-        label {
-            display: block;
-            margin: 15px 0 8px;
-            font-weight: 500;
-            color: var(--primary-purple);
-            font-size: 1.1em;
-        }
-        
-        input[type="file"], input[type="number"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px dashed var(--primary-purple);
-            border-radius: 8px;
-            background-color: var(--white);
-            color: var(--text-dark);
-            font-size: 1em;
-            transition: border-color 0.3s ease;
-            box-sizing: border-box;
-        }
-        
-        input[type="number"] {
-            border-style: solid; /* Solid border for number inputs */
-            max-width: 200px; /* Limit width for better layout */
-            display: inline-block;
-            margin-right: 10px;
-        }
-        
-        input[type="file"]:hover, input[type="number"]:hover {
-            border-color: #3E0B6A;
-        }
-        
-        .manual-inputs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: center;
-            justify-content: center;
-            margin: 15px 0;
-        }
-        
-        .manual-inputs label {
-            margin: 0 5px 0 0;
-            display: inline;
-            font-size: 1em;
-            width: auto;
-        }
-        
-        button {
-            background: linear-gradient(135deg, var(--primary-purple), #3E0B6A);
-            color: var(--white);
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: 500;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            margin: 10px 5px;
-            box-shadow: 0 2px 10px rgba(74, 20, 140, 0.25);
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.4);
-        }
-        
-        /* Professional Results Section */
-        #resultsSection {
-            background-color: var(--white);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(74, 20, 140, 0.15);
-            border: 1px solid var(--border-light);
-            margin-top: 20px;
-        }
-        
-        #resultsSection h3 {
-            color: var(--primary-purple);
-            text-align: center;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        table#resultsTable {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-light);
-        }
-        
-        th {
-            background: linear-gradient(135deg, var(--primary-purple), #3E0B6A);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 1em;
-        }
-        
-        tr:hover {
-            background-color: var(--light-purple);
-            transition: background-color 0.3s ease;
-        }
-        
-        #debugInfo {
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 0.9em;
-            display: none;
-        }
-        
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2em; }
-            .header h2 { font-size: 1.2em; }
-            #sheetUploadSection { padding: 20px; }
-            table { font-size: 0.9em; }
-            .manual-inputs { flex-direction: column; align-items: stretch; }
-            input[type="number"] { max-width: 100%; }
-        }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--white); color: var(--text-dark); margin: 0; padding: 20px; line-height: 1.6; }
+        .header { text-align: center; background: linear-gradient(135deg, var(--primary-purple), var(--light-purple)); color: var(--white); padding: 40px 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3); margin-bottom: 30px; }
+        .header h1 { font-size: 3em; font-weight: 700; margin: 0 0 10px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .header h2 { font-size: 1.5em; font-weight: 300; margin: 0; opacity: 0.9; }
+        #sheetUploadSection { max-width: 800px; margin: 0 auto; background-color: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(74, 20, 140, 0.15); border: 1px solid var(--border-light); }
+        #sheetUploadSection h2 { color: var(--primary-purple); text-align: center; font-size: 1.8em; margin-bottom: 20px; border-bottom: 2px solid var(--light-purple); padding-bottom: 10px; }
+        #sheetUploadSection p { text-align: center; color: var(--text-dark); font-size: 1.1em; margin-bottom: 30px; font-weight: 300; }
+        form#uploadForm { background-color: var(--light-purple); padding: 25px; border-radius: 10px; margin-bottom: 20px; box-shadow: inset 0 2px 10px rgba(74, 20, 140, 0.1); }
+        label { display: block; margin: 15px 0 8px; font-weight: 500; color: var(--primary-purple); font-size: 1.1em; }
+        input[type="file"], input[type="number"] { width: 100%; padding: 12px; border: 2px dashed var(--primary-purple); border-radius: 8px; background-color: var(--white); color: var(--text-dark); font-size: 1em; transition: border-color 0.3s ease; box-sizing: border-box; }
+        input[type="number"] { border-style: solid; max-width: 200px; display: inline-block; margin-right: 10px; }
+        input[type="file"]:hover, input[type="number"]:hover { border-color: #3E0B6A; }
+        .manual-inputs { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: center; margin: 15px 0; }
+        .manual-inputs label { margin: 0 5px 0 0; display: inline; font-size: 1em; width: auto; }
+        button { background: linear-gradient(135deg, var(--primary-purple), #3E0B6A); color: var(--white); padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-size: 1.1em; font-weight: 500; transition: transform 0.2s ease, box-shadow 0.2s ease; margin: 10px 5px; box-shadow: 0 2px 10px rgba(74, 20, 140, 0.25); }
+        button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(74, 20, 140, 0.4); }
+        #resultsSection { background-color: var(--white); padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(74, 20, 140, 0.15); border: 1px solid var(--border-light); margin-top: 20px; display: none; }
+        #resultsSection h3 { color: var(--primary-purple); text-align: center; font-size: 1.5em; margin-bottom: 20px; }
+        table#resultsTable { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        th, td { padding: 15px; text-align: center; border-bottom: 1px solid var(--border-light); }
+        th { background: linear-gradient(135deg, var(--primary-purple), #3E0B6A); color: var(--white); font-weight: 700; font-size: 1em; }
+        tr:hover { background-color: var(--light-purple); transition: background-color 0.3s ease; }
+        .util-cell, .occ-cell { font-weight: bold; }
+        .good { color: var(--success-green); }
+        .warning { color: var(--warning-orange); }
+        .bad { color: var(--danger-red); }
+        @media (max-width: 768px) { .header h1 { font-size: 2em; } .header h2 { font-size: 1.2em; } #sheetUploadSection { padding: 20px; } table { font-size: 0.9em; } .manual-inputs { flex-direction: column; align-items: stretch; } input[type="number"] { max-width: 100%; } }
     </style>
 </head>
 <body>
-    <!-- Professional Header -->
     <div class="header">
         <h1>JustClean</h1>
         <h2>Retention Team Productivity</h2>
     </div>
-
-    <!-- Main Form Section -->
     <div id="sheetUploadSection">
         <h2>Utilization & Occupation Calculation</h2>
         <p>Upload the Ziwo Calls sheet (employee calls) and Maqsam Division sheet (employee division as CSV), then click "Calculate Results" for automatic calculation and display in the table.</p>
-        
         <form id="uploadForm">
-            <!-- New Manual Inputs for Shift and Breaks -->
             <div class="manual-inputs">
-                <label for="shiftHours">Shift Hours (Daily Duty):</label>
-                <input type="number" id="shiftHours" value="8" min="0" step="0.5" placeholder="e.g., 8">
-                
-                <label for="breakHours">Break Hours (Daily Breaks):</label>
-                <input type="number" id="breakHours" value="1" min="0" step="0.5" placeholder="e.g., 1">
-                
-                <p style="font-size: 0.9em; color: var(--primary-purple); margin: 0;">
-                    Available Time = Shift - Breaks (Used if CSV doesn't provide)
-                </p>
+                <label for="shiftHours">Shift Hours:</label>
+                <input type="number" id="shiftHours" value="8" min="0" step="0.5">
+                <label for="breakHours">Break Hours:</label>
+                <input type="number" id="breakHours" value="1" min="0" step="0.5">
+                <p style="font-size: 0.9em; color: var(--primary-purple); margin: 0;">Available = Shift - Breaks (if CSV missing)</p>
             </div>
-            
-            <label for="ziwoFile">Ziwo Calls Sheet (CSV - Calls):</label>
+            <label for="ziwoFile">Ziwo Calls CSV:</label>
             <input type="file" id="ziwoFile" accept=".csv" required>
-            
-            <label for="maqsamFile">Maqsam Division Sheet (CSV - Division):</label>
+            <label for="maqsamFile">Maqsam Division CSV:</label>
             <input type="file" id="maqsamFile" accept=".csv" required>
-            
             <button type="button" id="calculateBtn">Calculate Results</button>
         </form>
-        
-        <div id="debugInfo">
-            <h4>Debug Info (Check Console F12 for details):</h4>
-            <p id="debugText"></p>
-        </div>
-        
-        <!-- Results Section -->
-        <div id="resultsSection" style="display: none;">
+        <div id="resultsSection">
             <h3>Results for Each Employee:</h3>
             <table id="resultsTable">
                 <thead>
@@ -270,13 +84,9 @@
             <button type="button" id="exportBtn">Export Results as CSV</button>
         </div>
     </div>
-
     <script>
-        // Debug Mode: Change these indices if your CSV columns are different
-        // Ziwo: agentNameIndex = 0, durationIndex = 3 (Duration in minutes)
-        // Maqsam: agentNameIndex = 0, availableIndex = 1, idleIndex = 3, additionalIndex = 4
-        const ZIWO_AGENT_INDEX = 0; // Change if name is not first column
-        const ZIWO_DURATION_INDEX = 3; // Change if Duration is not 4th column (0-based)
+        const ZIWO_AGENT_INDEX = 0;
+        const ZIWO_DURATION_INDEX = 3;
         const MAQSAM_AGENT_INDEX = 0;
         const MAQSAM_AVAILABLE_INDEX = 1;
         const MAQSAM_IDLE_INDEX = 3;
@@ -285,30 +95,22 @@
         let ziwoData = [];
         let maqsamData = [];
         let results = {};
-        let defaultAvailableHours = 7; // Default: 8 - 1
+        let defaultAvailableHours = 7;
 
         document.getElementById('calculateBtn').addEventListener('click', function() {
+            console.log('Button clicked');
             const ziwoFile = document.getElementById('ziwoFile').files[0];
             const maqsamFile = document.getElementById('maqsamFile').files[0];
             const shiftHours = parseFloat(document.getElementById('shiftHours').value) || 8;
             const breakHours = parseFloat(document.getElementById('breakHours').value) || 1;
             defaultAvailableHours = shiftHours - breakHours;
-            
-            console.log(`Manual Inputs: Shift=${shiftHours}h, Breaks=${breakHours}h, Available=${defaultAvailableHours}h`); // Debug
-            
-            if (!ziwoFile || !maqsamFile) {
-                alert('Please upload both sheets (Ziwo and Maqsam) first!');
-                return;
-            }
-            
+            if (!ziwoFile || !maqsamFile) { alert('Upload both CSVs!'); return; }
             const ziwoReader = new FileReader();
             ziwoReader.onload = function(e) {
                 ziwoData = parseCSV(e.target.result);
-                console.log('Ziwo Data Parsed:', ziwoData.slice(0, 3)); // Debug: First 3 rows
                 const maqsamReader = new FileReader();
                 maqsamReader.onload = function(f) {
                     maqsamData = parseCSV(f.target.result);
-                    console.log('Maqsam Data Parsed:', maqsamData.slice(0, 3)); // Debug
                     performCalculations();
                 };
                 maqsamReader.readAsText(maqsamFile);
@@ -316,77 +118,73 @@
             ziwoReader.readAsText(ziwoFile);
         });
 
-        function parseCSV(csvText) {
-            const lines = csvText.split('\n').filter(line => line.trim() !== '');
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            if (Object.keys(results).length === 0) { alert('Calculate first!'); return; }
+            let csv = 'Name,Calls (h),Available (h),Util (%),Occ (%)\n';
+            Object.keys(results).sort().forEach(name => {
+                const d = results[name];
+                csv += `"${name}",${d.totalCallHours.toFixed(2)},${d.availableHours.toFixed(2)},${d.utilization.toFixed(2)},${d.occupation.toFixed(2)}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'results.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        function parseCSV(text) {
+            const lines = text.split('\n').filter(l => l.trim());
             return lines.map(line => {
                 const row = [];
-                let current = '';
-                let inQuotes = false;
+                let curr = '';
+                let inQ = false;
                 for (let i = 0; i < line.length; i++) {
-                    const char = line[i];
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        row.push(current.trim().replace(/"/g, '')); // Remove quotes
-                        current = '';
-                    } else {
-                        current += char;
-                    }
+                    const ch = line[i];
+                    if (ch === '"') inQ = !inQ;
+                    else if (ch === ',' && !inQ) { row.push(curr.trim().replace(/"/g, '')); curr = ''; }
+                    else curr += ch;
                 }
-                row.push(current.trim().replace(/"/g, '')); // Last field
+                row.push(curr.trim().replace(/"/g, ''));
                 return row;
             });
         }
 
         function performCalculations() {
             results = {};
-            
-            // Process Ziwo (Calls)
-            ziwoData.forEach((row, index) => {
-                if (index === 0) return; // Skip header
-                if (row.length <= ZIWO_DURATION_INDEX) return; // Skip invalid rows
-                const agentName = row[ZIWO_AGENT_INDEX]?.trim() || 'Unknown';
-                const durationMinutes = parseFloat(row[ZIWO_DURATION_INDEX]) || 0;
-                console.log(`Ziwo Row ${index}: Agent=${agentName}, Duration Min=${durationMinutes}`); // Debug
-                if (!results[agentName]) {
-                    results[agentName] = { 
-                        totalCallHours: 0, 
-                        availableHours: defaultAvailableHours, // Use manual default initially
-                        idleHours: 0, 
-                        additionalActivity: 0 
-                    };
-                }
-                results[agentName].totalCallHours += durationMinutes / 60;
+            // Ziwo: Aggregate calls
+            ziwoData.forEach((row, idx) => {
+                if (idx === 0 || row.length <= ZIWO_DURATION_INDEX) return;
+                const name = row[ZIWO_AGENT_INDEX]?.trim() || 'Unknown';
+                const durMin = parseFloat(row[ZIWO_DURATION_INDEX]) || 0;
+                if (!results[name]) results[name] = { totalCallHours: 0, availableHours: defaultAvailableHours, additionalActivity: 0 };
+                results[name].totalCallHours += durMin / 60;
             });
-            
-            // Process Maqsam (Division) - Overrides available if present
-            maqsamData.forEach((row, index) => {
-                if (index === 0) return; // Skip header
-                if (row.length <= MAQSAM_ADDITIONAL_INDEX) return;
-                const agentName = row[MAQSAM_AGENT_INDEX]?.trim() || 'Unknown';
-                console.log(`Maqsam Row ${index}: Agent=${agentName}`); // Debug
-                if (results[agentName]) {
-                    // Override availableHours if CSV has it, else keep manual default
-                    const csvAvailable = parseFloat(row[MAQSAM_AVAILABLE_INDEX]) || defaultAvailableHours;
-                    results[agentName].availableHours = csvAvailable;
-                    results[agentName].idleHours = parseFloat(row[MAQSAM_IDLE_INDEX]) || 0;
-                    results[agentName].additionalActivity = parseFloat(row[MAQSAM_ADDITIONAL_INDEX]) || 0;
-                } else {
-                    results[agentName] = { 
-                        totalCallHours: 0, 
-                        availableHours: defaultAvailableHours, // Use manual default
-                        idleHours: parseFloat(row[MAQSAM_IDLE_INDEX]) || 0, 
-                        additionalActivity: parseFloat(row[MAQSAM_ADDITIONAL_INDEX]) || 0 
-                    };
-                }
+            // Maqsam: Override available/additional
+            maqsamData.forEach((row, idx) => {
+                if (idx === 0 || row.length <= MAQSAM_ADDITIONAL_INDEX) return;
+                const name = row[MAQSAM_AGENT_INDEX]?.trim() || 'Unknown';
+                if (!results[name]) results[name] = { totalCallHours: 0, availableHours: defaultAvailableHours, additionalActivity: 0 };
+                results[name].availableHours = parseFloat(row[MAQSAM_AVAILABLE_INDEX]) || defaultAvailableHours;
+                results[name].additionalActivity = parseFloat(row[MAQSAM_ADDITIONAL_INDEX]) || 0;
             });
-            
-            // Calculate percentages
-            Object.keys(results).forEach(agentName => {
-                const data = results[agentName];
-                const utilization = (data.totalCallHours / data.availableHours) * 100;
-                const occupation = ((data.totalCallHours + data.additionalActivity) / data.availableHours) * 100;
-                
-                data.utilization = isNaN(utilization) ? 0 : Math.min(100, Math.max(0, utilization));
-                data.occupation = isNaN(occupation) ? 0 : Math.min(100, Math.max(0, occupation));
-                console.log(`Final for ${agentName}: Calls=${data.totalCallHours.toFixed(2)}h, Available=${data.availableHours.toFixed(2)}h, Util=${data.utilization.toFixed(2)}%, Occ=${data.occupation
+            // Calculate %
+            Object.keys(results).forEach(name => {
+                const d = results[name];
+                d.utilization = Math.round((d.totalCallHours / d.availableHours) * 100 * 100) / 100;
+                d.occupation = Math.round(((d.totalCallHours + d.additionalActivity) / d.availableHours) * 100 * 100) / 100;
+                d.utilization = Math.max(0, Math.min(100, d.utilization));
+                d.occupation = Math.max(0, Math.min(100, d.occupation));
+            });
+            displayResults();
+            console.log('Calculations done');
+        }
+
+        function displayResults() {
+            const tbody = document.querySelector('#resultsTable tbody');
+            tbody.innerHTML = '';
+            Object.keys(results).sort().forEach(name => {
+                const d = results[name];
+                const utilClass = d.utilization > 70 ? 'good' : d.utilization > 40 ? 'warning' : 'bad';
+               
