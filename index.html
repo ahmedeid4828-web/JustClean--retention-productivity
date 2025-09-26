@@ -8,16 +8,16 @@
     <style>
         /* Darker JustClean Colors: Deeper Purple and White */
         :root {
-            --primary-purple: #4A148C; /* Darker purple for headers and buttons */
-            --light-purple: #D7BDE2; /* Darker light purple for secondary backgrounds */
-            --white: #FFFFFF; /* Pure white */
-            --text-dark: #333333; /* Dark text for readability */
-            --border-light: #B39DDB; /* Darker light borders */
+            --primary-purple: #4A148C;
+            --light-purple: #D7BDE2;
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --border-light: #B39DDB;
         }
         
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: var(--white) !important; /* Main white background */
+            background-color: var(--white) !important;
             color: var(--text-dark);
             margin: 0;
             padding: 20px;
@@ -31,7 +31,7 @@
             color: var(--white);
             padding: 40px 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3); /* Darker purple shadow */
+            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
             margin-bottom: 30px;
         }
         
@@ -39,7 +39,7 @@
             font-size: 3em;
             font-weight: 700;
             margin: 0 0 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Slightly stronger shadow */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .header h2 {
@@ -56,7 +56,7 @@
             background-color: var(--white);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.15); /* Darker shadow */
+            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.15);
             border: 1px solid var(--border-light);
         }
         
@@ -82,7 +82,7 @@
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: inset 0 2px 10px rgba(74, 20, 140, 0.1); /* Darker inset shadow */
+            box-shadow: inset 0 2px 10px rgba(74, 20, 140, 0.1);
         }
         
         label {
@@ -93,7 +93,7 @@
             font-size: 1.1em;
         }
         
-        input[type="file"] {
+        input[type="file"], input[type="number"] {
             width: 100%;
             padding: 12px;
             border: 2px dashed var(--primary-purple);
@@ -102,14 +102,38 @@
             color: var(--text-dark);
             font-size: 1em;
             transition: border-color 0.3s ease;
+            box-sizing: border-box;
         }
         
-        input[type="file"]:hover {
-            border-color: #3E0B6A; /* Even darker purple on hover */
+        input[type="number"] {
+            border-style: solid; /* Solid border for number inputs */
+            max-width: 200px; /* Limit width for better layout */
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        input[type="file"]:hover, input[type="number"]:hover {
+            border-color: #3E0B6A;
+        }
+        
+        .manual-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .manual-inputs label {
+            margin: 0 5px 0 0;
+            display: inline;
+            font-size: 1em;
+            width: auto;
         }
         
         button {
-            background: linear-gradient(135deg, var(--primary-purple), #3E0B6A); /* Darker gradient */
+            background: linear-gradient(135deg, var(--primary-purple), #3E0B6A);
             color: var(--white);
             padding: 12px 25px;
             border: none;
@@ -119,12 +143,12 @@
             font-weight: 500;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             margin: 10px 5px;
-            box-shadow: 0 2px 10px rgba(74, 20, 140, 0.25); /* Darker button shadow */
+            box-shadow: 0 2px 10px rgba(74, 20, 140, 0.25);
         }
         
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.4); /* Stronger hover shadow */
+            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.4);
         }
         
         /* Professional Results Section */
@@ -132,7 +156,7 @@
             background-color: var(--white);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(74, 20, 140, 0.15); /* Darker shadow */
+            box-shadow: 0 2px 10px rgba(74, 20, 140, 0.15);
             border: 1px solid var(--border-light);
             margin-top: 20px;
         }
@@ -148,7 +172,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Subtle table shadow */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         th, td {
@@ -158,23 +182,33 @@
         }
         
         th {
-            background: linear-gradient(135deg, var(--primary-purple), #3E0B6A); /* Darker header gradient */
+            background: linear-gradient(135deg, var(--primary-purple), #3E0B6A);
             color: var(--white);
             font-weight: 700;
             font-size: 1em;
         }
         
         tr:hover {
-            background-color: var(--light-purple); /* Hover with darker light purple */
+            background-color: var(--light-purple);
             transition: background-color 0.3s ease;
         }
         
-        /* Responsive for Mobile */
+        #debugInfo {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .header h1 { font-size: 2em; }
             .header h2 { font-size: 1.2em; }
             #sheetUploadSection { padding: 20px; }
             table { font-size: 0.9em; }
+            .manual-inputs { flex-direction: column; align-items: stretch; }
+            input[type="number"] { max-width: 100%; }
         }
     </style>
 </head>
@@ -191,6 +225,19 @@
         <p>Upload the Ziwo Calls sheet (employee calls) and Maqsam Division sheet (employee division as CSV), then click "Calculate Results" for automatic calculation and display in the table.</p>
         
         <form id="uploadForm">
+            <!-- New Manual Inputs for Shift and Breaks -->
+            <div class="manual-inputs">
+                <label for="shiftHours">Shift Hours (Daily Duty):</label>
+                <input type="number" id="shiftHours" value="8" min="0" step="0.5" placeholder="e.g., 8">
+                
+                <label for="breakHours">Break Hours (Daily Breaks):</label>
+                <input type="number" id="breakHours" value="1" min="0" step="0.5" placeholder="e.g., 1">
+                
+                <p style="font-size: 0.9em; color: var(--primary-purple); margin: 0;">
+                    Available Time = Shift - Breaks (Used if CSV doesn't provide)
+                </p>
+            </div>
+            
             <label for="ziwoFile">Ziwo Calls Sheet (CSV - Calls):</label>
             <input type="file" id="ziwoFile" accept=".csv" required>
             
@@ -199,6 +246,11 @@
             
             <button type="button" id="calculateBtn">Calculate Results</button>
         </form>
+        
+        <div id="debugInfo">
+            <h4>Debug Info (Check Console F12 for details):</h4>
+            <p id="debugText"></p>
+        </div>
         
         <!-- Results Section -->
         <div id="resultsSection" style="display: none;">
@@ -220,14 +272,29 @@
     </div>
 
     <script>
-        // Core Functionality (Unchanged - 100% Accurate)
+        // Debug Mode: Change these indices if your CSV columns are different
+        // Ziwo: agentNameIndex = 0, durationIndex = 3 (Duration in minutes)
+        // Maqsam: agentNameIndex = 0, availableIndex = 1, idleIndex = 3, additionalIndex = 4
+        const ZIWO_AGENT_INDEX = 0; // Change if name is not first column
+        const ZIWO_DURATION_INDEX = 3; // Change if Duration is not 4th column (0-based)
+        const MAQSAM_AGENT_INDEX = 0;
+        const MAQSAM_AVAILABLE_INDEX = 1;
+        const MAQSAM_IDLE_INDEX = 3;
+        const MAQSAM_ADDITIONAL_INDEX = 4;
+
         let ziwoData = [];
         let maqsamData = [];
         let results = {};
+        let defaultAvailableHours = 7; // Default: 8 - 1
 
         document.getElementById('calculateBtn').addEventListener('click', function() {
             const ziwoFile = document.getElementById('ziwoFile').files[0];
             const maqsamFile = document.getElementById('maqsamFile').files[0];
+            const shiftHours = parseFloat(document.getElementById('shiftHours').value) || 8;
+            const breakHours = parseFloat(document.getElementById('breakHours').value) || 1;
+            defaultAvailableHours = shiftHours - breakHours;
+            
+            console.log(`Manual Inputs: Shift=${shiftHours}h, Breaks=${breakHours}h, Available=${defaultAvailableHours}h`); // Debug
             
             if (!ziwoFile || !maqsamFile) {
                 alert('Please upload both sheets (Ziwo and Maqsam) first!');
@@ -237,9 +304,11 @@
             const ziwoReader = new FileReader();
             ziwoReader.onload = function(e) {
                 ziwoData = parseCSV(e.target.result);
+                console.log('Ziwo Data Parsed:', ziwoData.slice(0, 3)); // Debug: First 3 rows
                 const maqsamReader = new FileReader();
                 maqsamReader.onload = function(f) {
                     maqsamData = parseCSV(f.target.result);
+                    console.log('Maqsam Data Parsed:', maqsamData.slice(0, 3)); // Debug
                     performCalculations();
                 };
                 maqsamReader.readAsText(maqsamFile);
@@ -258,13 +327,13 @@
                     if (char === '"') {
                         inQuotes = !inQuotes;
                     } else if (char === ',' && !inQuotes) {
-                        row.push(current.trim());
+                        row.push(current.trim().replace(/"/g, '')); // Remove quotes
                         current = '';
                     } else {
                         current += char;
                     }
                 }
-                row.push(current.trim());
+                row.push(current.trim().replace(/"/g, '')); // Last field
                 return row;
             });
         }
@@ -272,14 +341,17 @@
         function performCalculations() {
             results = {};
             
+            // Process Ziwo (Calls)
             ziwoData.forEach((row, index) => {
-                if (index === 0) return;
-                const agentName = row[0];
-                const durationMinutes = parseFloat(row[3]) || 0;
+                if (index === 0) return; // Skip header
+                if (row.length <= ZIWO_DURATION_INDEX) return; // Skip invalid rows
+                const agentName = row[ZIWO_AGENT_INDEX]?.trim() || 'Unknown';
+                const durationMinutes = parseFloat(row[ZIWO_DURATION_INDEX]) || 0;
+                console.log(`Ziwo Row ${index}: Agent=${agentName}, Duration Min=${durationMinutes}`); // Debug
                 if (!results[agentName]) {
                     results[agentName] = { 
                         totalCallHours: 0, 
-                        availableHours: 8, 
+                        availableHours: defaultAvailableHours, // Use manual default initially
                         idleHours: 0, 
                         additionalActivity: 0 
                     };
@@ -287,23 +359,29 @@
                 results[agentName].totalCallHours += durationMinutes / 60;
             });
             
+            // Process Maqsam (Division) - Overrides available if present
             maqsamData.forEach((row, index) => {
-                if (index === 0) return;
-                const agentName = row[0];
+                if (index === 0) return; // Skip header
+                if (row.length <= MAQSAM_ADDITIONAL_INDEX) return;
+                const agentName = row[MAQSAM_AGENT_INDEX]?.trim() || 'Unknown';
+                console.log(`Maqsam Row ${index}: Agent=${agentName}`); // Debug
                 if (results[agentName]) {
-                    results[agentName].availableHours = parseFloat(row[1]) || 8;
-                    results[agentName].idleHours = parseFloat(row[3]) || 0;
-                    results[agentName].additionalActivity = parseFloat(row[4]) || 0;
+                    // Override availableHours if CSV has it, else keep manual default
+                    const csvAvailable = parseFloat(row[MAQSAM_AVAILABLE_INDEX]) || defaultAvailableHours;
+                    results[agentName].availableHours = csvAvailable;
+                    results[agentName].idleHours = parseFloat(row[MAQSAM_IDLE_INDEX]) || 0;
+                    results[agentName].additionalActivity = parseFloat(row[MAQSAM_ADDITIONAL_INDEX]) || 0;
                 } else {
                     results[agentName] = { 
                         totalCallHours: 0, 
-                        availableHours: parseFloat(row[1]) || 8,
-                        idleHours: parseFloat(row[3]) || 0, 
-                        additionalActivity: parseFloat(row[4]) || 0 
+                        availableHours: defaultAvailableHours, // Use manual default
+                        idleHours: parseFloat(row[MAQSAM_IDLE_INDEX]) || 0, 
+                        additionalActivity: parseFloat(row[MAQSAM_ADDITIONAL_INDEX]) || 0 
                     };
                 }
             });
             
+            // Calculate percentages
             Object.keys(results).forEach(agentName => {
                 const data = results[agentName];
                 const utilization = (data.totalCallHours / data.availableHours) * 100;
@@ -311,53 +389,4 @@
                 
                 data.utilization = isNaN(utilization) ? 0 : Math.min(100, Math.max(0, utilization));
                 data.occupation = isNaN(occupation) ? 0 : Math.min(100, Math.max(0, occupation));
-            });
-            
-            displayResults(results);
-            document.getElementById('resultsSection').style.display = 'block';
-            alert('Calculation completed successfully! See the table below for results for each employee.');
-        }
-
-        function displayResults(resultsData) {
-            const tbody = document.querySelector('#resultsTable tbody');
-            tbody.innerHTML = '';
-            
-            Object.keys(resultsData).forEach(agentName => {
-                const data = resultsData[agentName];
-                const row = tbody.insertRow();
-                row.innerHTML = `
-                    <td>${agentName}</td>
-                    <td>${data.totalCallHours.toFixed(2)}</td>
-                    <td>${data.availableHours.toFixed(2)}</td>
-                    <td style="color: ${data.utilization > 70 ? '#4CAF50' : data.utilization < 30 ? '#F44336' : '#FF9800'};">${data.utilization.toFixed(2)}%</td>
-                    <td style="color: ${data.occupation > 80 ? '#4CAF50' : data.occupation < 40 ? '#F44336' : '#FF9800'};">${data.occupation.toFixed(2)}%</td>
-                `;
-            });
-        }
-
-        document.getElementById('exportBtn').addEventListener('click', function() {
-            if (Object.keys(results).length === 0) {
-                alert('Calculate results first!');
-                return;
-            }
-            
-            let csvContent = 'Employee Name,Total Call Time (Hours),Available Time (Hours),Utilization (%),Occupation (%)\n';
-            Object.keys(results).forEach(agentName => {
-                const data = results[agentName];
-                csvContent += `${agentName},${data.totalCallHours.toFixed(2)},${data.availableHours.toFixed(2)},${data.utilization.toFixed(2)},${data.occupation.toFixed(2)}\n`;
-            });
-            
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'utilization_occupation_results.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
-            alert('Results downloaded as CSV!');
-        });
-    </script>
-</body>
-</html>
+                console.log(`Final for ${agentName}: Calls=${data.totalCallHours.toFixed(2)}h, Available=${data.availableHours.toFixed(2)}h, Util=${data.utilization.toFixed(2)}%, Occ=${data.occupation
